@@ -132,11 +132,12 @@ const findLetterS = (arr: Product[]): Product[] =>{
 }
 
 const changeArray = (arr: Product[]) => {
-    return arr.map(product => ({productId: product.productId, nameProduct: product.name, category: product.category, discount: (product.price*0.1), applyDiscount: true }))
+    return arr.map(product => [...categories, ...discountsHolyDays]
+        .map((categoryHolyDay:any) => ({idProduct: product.productId, nameProduct: product.name, categoryProduct: categoryHolyDay.name, discount: categoryHolyDay.value})));
 }
 
 const changeArraySimple = (arr: Product[]) => {
-    return arr.map(product => ({ productId: product.productId, priceWithDiscount: product.price}))
+    return [...arr, ...discountsHolyDays].map((product:any) => ({ productId: product.productId, priceWithDiscount: product.price}))
 }
 
 // Solutions
